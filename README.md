@@ -3,11 +3,10 @@ lazy-login
 
 Demo: http://dinethh.github.io/lazy-login/elements/lazy-login/demo.html
 
-Attributes:
-
-username - displays username input field
-email - displays email address input field
-createAccountButton - displays create new account button
+Install:
+```
+bower install --save lazy-login
+```
 
 Usage:
 
