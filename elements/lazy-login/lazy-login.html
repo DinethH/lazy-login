@@ -1,0 +1,97 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+
+<polymer-element name="lazy-login" attributes="username email createAccountButton">
+    <template>
+        <style>
+            .create-account-button {
+                margin-left: 0;
+                color: grey;
+            }
+            .cancel-button {
+                color: orange;
+            }
+            .login-button {
+                color: green;
+            }
+        </style>
+        <paper-shadow z="0">
+            <div vertical layout>
+                <div>
+                    <template if="{{username}}">
+                        <paper-input-decorator label="Username:" floatingLabel id="decUsername" error="Please enter your username!">
+                            <input type="text" value="{{item.Username}}" is="core-input" id="inUsername">
+                        </paper-input-decorator>
+                    </template>
+
+                    <template if="{{email}}">
+                        <paper-input-decorator label="Email:" floatingLabel id="decEmail" error="Please enter your email address!">
+                            <input type="email" value="{{item.Email}}" is="core-input" id="inEmail">
+                        </paper-input-decorator>
+                    </template>
+
+                    <paper-input-decorator label="Password:" floatingLabel id="decPassword" error="Please enter a password!">
+                        <input type="password" value="{{item.Password}}" is="core-input" id="inPassword">
+                    </paper-input-decorator>
+                </div>
+
+                <div style="padding-top:20px;" horizontal layout>
+                    <div flex>
+                        <template if="{{createAccountButton}}">
+                            <paper-button class="create-account-button">Don't have an account?</paper-button>
+                        </template>
+                    </div>
+
+                    <div>
+                        <paper-button class="cancel-button">Cancel</paper-button>
+                        <paper-button on-tap="{{login}}" class="login-button">Login</paper-button>
+                    </div>
+
+                </div>
+            </div>
+        </paper-shadow>
+    </template>
+
+    <script>
+        Polymer({
+            created: function () {
+                this.item = {};
+            },
+            login: function () {
+                var validEmail = true;
+                var validPassword = true;
+                var validUsername = true;
+
+                if (this.email) {
+                    if (!this.item.Email || this.item.Email.length < 3) {
+                        this.$.decEmail.isInvalid = true;
+                        validEmail = false;
+                    } else {
+                        this.$.decEmail.isInvalid = false;
+                    }
+                }
+
+                if (this.username) {
+                    if (!this.item.Username || this.item.Username.length < 3) {
+                        this.$.decUsername.isInvalid = true;
+                        validUsername = false;
+                    } else {
+                        this.$.decUsername.isInvalid = false;
+                    }
+                }
+
+                if (!this.item.Password || this.item.Password.length < 3) {
+                    this.$.decPassword.isInvalid = true;
+                    validPassword = false;
+                } else {
+                    this.$.decPassword.isInvalid = false;
+                }
+            }
+        });
+    </script>
+
+</polymer-element>
+
