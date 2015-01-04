@@ -12,7 +12,11 @@ createAccountButton - displays create new account button
 Usage:
 
 Using email attribute
+```
 <lazy-login email=true></lazy-login>
+```
     
 Using username and createAccountButton attributes
+```
 <lazy-login username=true createAccountButton=true></lazy-login>
+```
