@@ -58,6 +58,21 @@
     <script>
         Polymer({
             created: function () {
+                if (this.username) {
+                    this.username = true;
+                } else {
+                    this.username = false;
+                }
+                if (this.email) {
+                    this.email = true;
+                } else {
+                    this.email = false;
+                }
+                if (this.createAccountButton) {
+                    this.createAccountButton = true;
+                } else {
+                    this.createAccountButton = false;
+                }
                 this.item = {};
             },
             login: function () {
@@ -71,7 +86,15 @@
                         validEmail = false;
                     } else {
                         this.$.decEmail.isInvalid = false;
+                        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                        if (!re.test(this.item.Email)) {
+                            this.$.decEmail.isInvalid = true;
+                            validEmail = false;
+                        } else {
+                            this.$.decEmail.isInvalid = false;
+                        }
                     }
+
                 }
 
                 if (this.username) {
