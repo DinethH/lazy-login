@@ -13,10 +13,10 @@ Usage:
 
 Using email attribute
 ```
-<lazy-login email=true></lazy-login>
+<lazy-login email></lazy-login>
 ```
     
 Using username and createAccountButton attributes
 ```
-<lazy-login username=true createAccountButton=true></lazy-login>
+<lazy-login username createAccountButton></lazy-login>
 ```
